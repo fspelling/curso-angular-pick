@@ -1,2 +1,1 @@
-<h2> {{ title }} </h2>
-<img class="img-thumbnail" width="800" [src]="url" [alt]="alt"/>
+<ap-photo *ngFor="let photo of photos" [url] = 'photo.url' [alt]='photo.alt'></ap-photo>
