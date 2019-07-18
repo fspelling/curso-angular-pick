@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  photos = [
-    { url: '../assets/imgs/Capture001.png', alt: 'imagem 1' },
-    { url: '../assets/imgs/Capture001.png', alt: 'imagem 2' }
-  ];
+  photos: object[] = [];
+
+  constructor(http: HttpClient) {
+    http.get<object[]>('http://localhost:3000/flavio/photos')
+      .subscribe(photos => this.photos = photos);
+  }
 }
