@@ -12,11 +12,12 @@ import { PhotoService } from '../photo/photo.service';
 export class PhotoListComponent implements OnInit {
   photos: Photo[] = [];
 
+  filter = '';
+
   constructor(private photoService: PhotoService, private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     const userName = this.activateRoute.snapshot.params.userName;
-    
     this.photoService.listFromUser(userName)
       .subscribe(photos => this.photos = photos);
   }
