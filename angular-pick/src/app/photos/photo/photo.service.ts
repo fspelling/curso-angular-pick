@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Photo } from './photo';
+import { Observable } from 'rxjs';
 
 const API = 'http://localhost:3000';
 
@@ -8,7 +9,12 @@ const API = 'http://localhost:3000';
 export class PhotoService {
     constructor(private http: HttpClient) { }
 
-    listFromUser(userName: string) {
+    listFromUser(userName: string): Observable<Photo[]> {
         return this.http.get<Photo[]>(`${API}/${userName}/photos`);
+    }
+
+    listFromUserPaginated(userName: string, page: number): Observable<Photo[]> {
+        const params: HttpParams = new HttpParams().append('page', page.toString()); // montar querystring
+        return this.http.get<Photo[]>(`${API}/${userName}/photos`, { params });
     }
 }
