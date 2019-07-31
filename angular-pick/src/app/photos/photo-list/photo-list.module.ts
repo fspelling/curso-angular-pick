@@ -8,7 +8,7 @@ import { FilterByDescription } from "./filter-by-description.pipe";
 import { PhotoModule } from "../photo/photo.module";
 import { PhotoSearchComponent } from "./search/photo-search.component";
 import { CardModule } from "src/app/shared/components/card/card.module";
-import { DarkenOnHoverModule } from "src/app/shared/directives/darken-on-hover.module";
+import { DarkenOnHoverModule } from "src/app/shared/directives/darken-on-hover/darken-on-hover.module";
 
 @NgModule({
     declarations: [
