@@ -19,7 +19,7 @@ export class UserService {
     }
 
     setToken(token: string) {
-        this.setToken(token);
+        this.tokenService.setToken(token);
         this.decodeAndNotify();
     }
 
@@ -33,6 +33,7 @@ export class UserService {
 
     logout() {
         this.tokenService.removeToken();
+        this.userSubject.next(null);
     }
 
     isLogged(): boolean {
@@ -41,7 +42,7 @@ export class UserService {
 
     private decodeAndNotify() {
         const token = this.tokenService.getToken();
-        const user = jwt_decoder.decode(token) as User;
+        const user = jwt_decoder(token) as User;
         this.userName = user.name;
         this.userSubject.next(user);
     }

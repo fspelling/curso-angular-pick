@@ -15,7 +15,7 @@ export class AuthGuardService implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         if (this.userService.isLogged()) {
             const userName = this.userService.getUserName();
-            this.router.navigate(['', userName]);
+            this.router.navigate(['user', userName]);
             return false;
         }
 
