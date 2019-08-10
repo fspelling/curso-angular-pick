@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { PhotosModule } from './photos/photos.module';
 import { ErrorsModule } from './errors/errors.module';
-import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    HomeModule,
     PhotosModule,
     ErrorsModule,
     CoreModule,
