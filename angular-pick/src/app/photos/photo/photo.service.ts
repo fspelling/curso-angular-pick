@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Photo } from './photo';
 import { Observable } from 'rxjs';
+import { PhotoComment } from './photo-comment';
 
 const API = 'http://localhost:3000';
 
@@ -27,7 +28,15 @@ export class PhotoService {
         return this.http.post(`${API}/photos/upload`, formData);
     }
 
-    getById(id: string): Observable<Photo> {
-        return this.http.get<Photo>(`${API}/photos/${id}`);
+    getById(photoID: number): Observable<Photo> {
+        return this.http.get<Photo>(`${API}/photos/${photoID}`);
+    }
+
+    getCommentsById(photoID: number): Observable<PhotoComment[]> {
+        return this.http.get<PhotoComment[]>(`${API}/photos/${photoID}/comments`);
+    }
+
+    saveComment(photoID: number, commentText: string): Observable<any> {
+        return this.http.post<PhotoComment[]>(`${API}/photos/${photoID}/comments`, { commentText });
     }
 }

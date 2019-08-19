@@ -11,13 +11,14 @@ import { Photo } from "../photo/photo";
 })
 export class PhotoDetailComponent implements OnInit {
     photo$: Observable<Photo>;
+    idImage: number;
 
     constructor(
         private photoService: PhotoService,
         private router: ActivatedRoute) { }
 
     ngOnInit(): void {
-        const idImage = this.router.snapshot.params.idImage;
-        this.photo$ = this.photoService.getById(idImage);
+        this.idImage = this.router.snapshot.params.idImage;
+        this.photo$ = this.photoService.getById(this.idImage);
     }
 }
