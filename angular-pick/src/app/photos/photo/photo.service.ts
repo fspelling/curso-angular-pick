@@ -37,6 +37,10 @@ export class PhotoService {
     }
 
     saveComment(photoID: number, commentText: string): Observable<any> {
-        return this.http.post<PhotoComment[]>(`${API}/photos/${photoID}/comments`, { commentText });
+        return this.http.post(`${API}/photos/${photoID}/comments`, { commentText });
+    }
+
+    remove(photoID: number): Observable<any> {
+        return this.http.delete(`${API}/photos/${photoID}`);
     }
 }
