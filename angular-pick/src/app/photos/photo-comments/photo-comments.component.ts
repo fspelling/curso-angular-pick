@@ -5,6 +5,7 @@ import { switchMap, tap } from 'rxjs/operators';
 
 import { PhotoComment } from "../photo/photo-comment";
 import { PhotoService } from "../photo/photo.service";
+import { AlertService } from "src/app/shared/alert/alert.service";
 
 @Component({
     selector: 'ap-photo-comments',
@@ -19,7 +20,8 @@ export class PhotoCommentsComponent implements OnInit {
 
     constructor(
         private photoService: PhotoService,
-        private fb: FormBuilder) { }
+        private fb: FormBuilder,
+        private alertService: AlertService) { }
 
     ngOnInit(): void {
         this.comments$ = this.photoService.getCommentsById(this.photoID);
@@ -34,7 +36,7 @@ export class PhotoCommentsComponent implements OnInit {
                                          .pipe(switchMap(() => this.photoService.getCommentsById(this.photoID)))
                                          .pipe(tap(() => {
                                              this.commentForm.reset();
-                                             alert('cometario realziado com sucesso');
+                                             this.alertService.Success('cometario realziado com sucesso');
                                          }));
     }
 }
