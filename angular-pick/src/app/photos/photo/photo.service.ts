@@ -48,7 +48,7 @@ export class PhotoService {
     }
 
     like(photoID: number): Observable<string | boolean> {
-        return this.http.post(`${API}/photos/${photoID}/likes`, {}, { observe: 'response' })
+        return this.http.post(`${API}/photos/${photoID}/like`, {}, { observe: 'response' })
                             .pipe(map(res => true))
                             .pipe(catchError(error => error.status == 304 ? of('false') : throwError(error)));
     }
