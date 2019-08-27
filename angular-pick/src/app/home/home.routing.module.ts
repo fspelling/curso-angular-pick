@@ -1,10 +1,10 @@
-import { NgModule } from "@angular/core";
-import { Route, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 
-import { HomeComponent } from "./home.component";
-import { SignInComponent } from "./signin/signin.component";
-import { SignUpComponent } from "./signup/signup.component";
-import { LoginGuardService } from "../core/auth/login.guard.service";
+import { HomeComponent } from './home.component';
+import { SignInComponent } from './signin/signin.component';
+import { SignUpComponent } from './signup/signup.component';
+import { LoginGuardService } from '../core/auth/login.guard.service';
 
 const routes: Route[] = [
     {
@@ -12,13 +12,15 @@ const routes: Route[] = [
         component: HomeComponent,
         canActivate: [LoginGuardService],
         children: [
-            { 
-                path: '', 
-                component: SignInComponent
+            {
+                path: '',
+                component: SignInComponent,
+                data: { title: 'Sign in' }
             },
-            { 
-                path: 'signup', 
-                component: SignUpComponent
+            {
+                path: 'signup',
+                component: SignUpComponent,
+                data: { title: 'Sign up' }
             }
         ]
     }

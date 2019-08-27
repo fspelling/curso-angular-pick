@@ -21,23 +21,27 @@ const routes: Route[] = [
     {
         path: 'user/:userName',
         component: PhotoListComponent,
-        resolve: { photos: PhotoListResolver }
+        resolve: { photos: PhotoListResolver },
+        data: { title: 'Time line' }
     },
-    { 
-        path: 'p/add', 
+    {
+        path: 'p/add',
         component: PhotoFormComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        data: { title: 'Photo upload' }
     },
-    { 
-        path: 'p/:idImage', 
-        component: PhotoDetailComponent
+    {
+        path: 'p/:idImage',
+        component: PhotoDetailComponent,
+        data: { title: 'Photo detail' }
     },
-    { 
-        path: 'not-found', 
-        component: NotFoundComponent
+    {
+        path: 'not-found',
+        component: NotFoundComponent,
+        data: { title: 'Not found' }
     },
-    { 
-        path: '**', 
+    {
+        path: '**',
         redirectTo: 'not-found'
     }
 ];
