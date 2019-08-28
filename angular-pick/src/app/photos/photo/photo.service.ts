@@ -28,7 +28,7 @@ export class PhotoService {
         formData.append('allowComments', allowComments ? 'true' : 'false');
         formData.append('imageFile', file);
 
-        return this.http.post(`${API}/photos/upload`, formData);
+        return this.http.post(`${API}/photos/upload`, formData, { observe: 'events', reportProgress: true });
     }
 
     getById(photoID: number): Observable<Photo> {
@@ -50,6 +50,6 @@ export class PhotoService {
     like(photoID: number): Observable<string | boolean> {
         return this.http.post(`${API}/photos/${photoID}/like`, {}, { observe: 'response' })
                             .pipe(map(res => true))
-                            .pipe(catchError(error => error.status == 304 ? of('false') : throwError(error)));
+                            .pipe(catchError(error => error.status === 304 ? of('false') : throwError(error)));
     }
 }
