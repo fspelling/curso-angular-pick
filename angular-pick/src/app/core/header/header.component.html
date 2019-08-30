@@ -1,14 +1,15 @@
 <header class="fixed-top">
     <nav class="navbar navbar-light bg-white">
         <a class="navbar-brand">
-            <i class="fa fa-bars mr-2" (click)="menu.togle()"></i>
+            <i class="fa fa-bars mr-2" tabindex="0" (keyup.space)="menu.togle()" (click)="menu.togle()"></i>
             ALURAPIC
         </a>
 
         <ap-menu #menu>
-            <ul>
-                <li>Menu item 1</li>
-                <li>Menu item 2</li>
+            <ul class="list-unstyled">
+                <li>
+                    <a showIfLogged [routerLink]="['p', 'add']" (click)="menu.togle()">Upload</a>
+                </li>
             </ul>
         </ap-menu>
 
