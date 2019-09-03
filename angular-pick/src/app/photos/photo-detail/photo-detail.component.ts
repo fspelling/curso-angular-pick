@@ -29,7 +29,7 @@ export class PhotoDetailComponent implements OnInit {
     remove(): void {
         this.photoService.remove(this.idImage)
             .subscribe(() => {
-                this.router.navigate(['']);
+                this.router.navigate([''], { replaceUrl: true });
                 this.alertService.Success('foto removida com sucesso');
             });
     }
