@@ -7,6 +7,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { AuthGuardService } from './core/auth/auth.guard.service';
 import { PhotoDetailComponent } from './photos/photo-detail/photo-detail.component';
+import { GlobalErrorComponent } from './errors/global-error-handler/global-error/global-error.component';
 
 const routes: Route[] = [
     {
@@ -34,6 +35,10 @@ const routes: Route[] = [
         path: 'p/:idImage',
         component: PhotoDetailComponent,
         data: { title: 'Photo detail' }
+    },
+    {
+        path: 'error',
+        component: GlobalErrorComponent
     },
     {
         path: 'not-found',
